@@ -1,8 +1,11 @@
 import pandas as pd
 import datetime
-import pdfkit as pdf
+#import pdfkit as pdf
+from selenium import webdriver as wb
+wb = wb.Edge('msedgedriver.exe')
 
-# make ontext manager 
+
+# make context manager 
 class File(object):
 	
     def __init__(self, filename, mode):
@@ -115,7 +118,7 @@ class FileUpdateSystem(File):
             ''' 
         elif revision_date:
     
-            date_revisited = input('date_risk_assessment_was_revised:')
+            date_revisited = datetime.datetime.now()
             table_of_contents = f'''
                         <th>{date_revisited}</th>
             '''
@@ -173,6 +176,9 @@ fus.copy_into_ra('risk_assessment.html',date_indicator, secondary_step=True)
 
 fus.generate_table(revision_date=True)
 fus.copy_into_ra('risk_assessment.html',revision_date_indicator, secondary_step=True)
+
+# if the webdriver fails to access the web page make sure that the html file has been launched live
+wb.get('http://127.0.0.1:5500/risk_assessment.html')
 
 
 #to download the file download the wkhtmltox.exe file from https://wkhtmltopdf.org/downloads.html
