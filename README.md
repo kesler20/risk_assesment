@@ -7,4 +7,4 @@ The terminal will present the input as follows:
 ![terminal](terminal.png)
 
 whereas the web driver will launch within the local host the risk assesment file as follows:
-![page](risk_assesment_example.png)
+![page](risk_assesment_exmple.png)
